@@ -1,0 +1,22 @@
+
+spring:
+  application:
+    name: microservices_practice
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservice-user
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver  
+   
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+eureka:
+  instance:
+    ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8085/eureka

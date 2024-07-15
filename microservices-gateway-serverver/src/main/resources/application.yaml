@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: API-GATEWAY
+    
+  
+#  creating api gatewaye 
+  
+  
+  cloud:
+    gateway:
+      routes:
+      - id: MICROSERVICES-USER
+        uri: lb://MICROSERVICES-USER
+        predicates:
+         - Path=/user/**
+          
+        
+      - id: MICROSERVICES-HOTEL
+        uri: lb://MICROSERVICES-HOTEL
+        predicates:
+          - Path=/hotel/**,/worker/**
+        
+      - id: MICROSERVICES-RATING
+        uri: lb://MICROSERVICES-RATING
+        predicates:
+          - Path=/rating/**
+  config:
+    import:
+    -   optional:configserver:http://localhost:8087 
+
+
+
+
+
+ 
+server:
+  port: 8086
+  
+  # get config file from server 
+  
+    
+#eureka:
+#  instance:
+#    ip-address: true
+#  client:
+#    fetch-registry: true
+#    service-url:
+#         defaultZone: http://localhost:8085/eureka
+

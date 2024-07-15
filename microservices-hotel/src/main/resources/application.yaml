@@ -1,0 +1,41 @@
+server:
+  port: 8082
+  
+# application name
+spring:
+  application:
+    name: microservices-hotel
+    
+    
+#   database config 
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservice-hotel
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver  
+   
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      
+# get config file from server 
+  config:
+    import:
+     - optional:configserver:http://localhost:8087  
+#eureka:
+#  instance:
+#    ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8085/eureka
+     
+     
+#     swagger config
+springdoc:
+  api-docs:
+      path: /hotel-service
+      
+      

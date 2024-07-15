@@ -1,0 +1,34 @@
+server:
+  port: 8083
+  
+# my application name
+spring:
+  application:
+    name: microservices-rating
+    
+#   sql configration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservice-rating
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver  
+   
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      
+      
+#     get config file from github config
+  config:
+    import:
+    - optional:configserver:http://localhost:8087  
+      
+#eureka:
+#  instance:
+#    ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      defaultZone: http://localhost:8085/eureka
